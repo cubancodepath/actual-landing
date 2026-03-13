@@ -69,7 +69,8 @@
   },
   "footer": {
     "madeBy": "Hecho con cariño por",
-    "github": "GitHub",
+    "appSource": "Código fuente",
+    "actualRepo": "Actual Budget GitHub",
     "website": "Actual Budget",
     "privacy": "Privacidad"
   }

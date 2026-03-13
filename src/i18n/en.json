@@ -69,7 +69,8 @@
   },
   "footer": {
     "madeBy": "Made with care by",
-    "github": "GitHub",
+    "appSource": "App Source",
+    "actualRepo": "Actual Budget GitHub",
     "website": "Actual Budget",
     "privacy": "Privacy"
   }
