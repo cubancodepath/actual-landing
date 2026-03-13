@@ -234,20 +234,31 @@ const { t, lang } = Astro.props;
       const email = (form.querySelector('input[type="email"]') as HTMLInputElement)?.value;
       if (!email) return;
 
-      const turnstileInput = form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement;
-      const turnstileToken = turnstileInput?.value;
-      if (!turnstileToken) {
-        msg.textContent = 'Please complete the verification.';
-        msg.className = 'form-message error';
-        return;
-      }
-
       const btn = form.querySelector('button') as HTMLButtonElement;
       const originalText = btn.textContent;
       btn.textContent = '...';
       btn.disabled = true;
 
       try {
+        // Wait for Turnstile token (invisible mode may need a moment)
+        let turnstileToken = '';
+        const turnstileWidget = form.querySelector('.cf-turnstile');
+        if (turnstileWidget && (window as any).turnstile) {
+          const widgetId = turnstileWidget.getAttribute('data-turnstile-widget-id')
+            || (turnstileWidget as any)._widgetId;
+          turnstileToken = (window as any).turnstile.getResponse(turnstileWidget) || '';
+          if (!turnstileToken) {
+            // Trigger execution and wait for response
+            (window as any).turnstile.execute(turnstileWidget);
+            // Poll for token (max 5 seconds)
+            for (let i = 0; i < 50; i++) {
+              await new Promise(r => setTimeout(r, 100));
+              turnstileToken = (window as any).turnstile.getResponse(turnstileWidget) || '';
+              if (turnstileToken) break;
+            }
+          }
+        }
+
         const locale = document.documentElement.lang || 'en';
         const res = await fetch('/api/waitlist', {
           method: 'POST',
