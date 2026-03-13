@@ -1,0 +1,106 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  t: any;
+  lang: string;
+}
+
+const { t, lang } = Astro.props;
+---
+
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href={lang === 'es' ? '/es/' : '/'} class="logo">
+      <svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="var(--color-primary)" />
+        <text x="16" y="22" text-anchor="middle" fill="white" font-size="16" font-weight="700" font-family="var(--font-sans)">A</text>
+      </svg>
+      <span class="logo-text">Actual<span class="logo-mobile"> Mobile</span></span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#features">{t.nav.features}</a>
+      <a href="#how-it-works">{t.nav.howItWorks}</a>
+      <a href="#waitlist" class="nav-cta">{t.nav.waitlist}</a>
+      <LanguageSwitcher lang={lang} />
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    transition: background 0.3s, backdrop-filter 0.3s, box-shadow 0.3s;
+  }
+
+  .navbar.scrolled {
+    background: rgba(10, 6, 18, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1px 0 var(--color-border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-weight: 700;
+    font-size: 1.125rem;
+  }
+
+  .logo-mobile {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-text);
+  }
+
+  .nav-cta {
+    background: var(--color-primary);
+    color: var(--color-text) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-full);
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .nav-links a:not(.nav-cta):not(:last-child) {
+      display: none;
+    }
+    .logo-mobile { display: none; }
+  }
+</style>

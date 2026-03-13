@@ -1,0 +1,92 @@
+---
+interface Props {
+  t: any;
+}
+
+const { t } = Astro.props;
+
+const features = [
+  { key: 'localFirst', icon: 'device' },
+  { key: 'sync', icon: 'sync' },
+  { key: 'envelope', icon: 'envelope' },
+  { key: 'privacy', icon: 'lock' },
+] as const;
+
+const icons: Record<string, string> = {
+  device: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
+  sync: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>',
+  envelope: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 10h2v6H7z"/><path d="M11 8h2v8h-2z"/><path d="M15 12h2v4h-2z"/></svg>',
+  lock: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+};
+---
+
+<section class="features section" id="features">
+  <div class="container">
+    <h2 class="features-heading" data-animate="fade-up">{t.features.heading}</h2>
+
+    <div class="features-grid">
+      {features.map((f, i) => (
+        <div class="feature-card" data-animate="fade-up" data-delay={String(i * 0.1)}>
+          <div class="feature-icon" set:html={icons[f.icon]} />
+          <h3>{(t.features as any)[f.key].title}</h3>
+          <p>{(t.features as any)[f.key].description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-heading {
+    text-align: center;
+    margin-bottom: var(--space-4xl);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .feature-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(168, 85, 247, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(135, 25, 224, 0.15);
+  }
+
+  .feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: rgba(135, 25, 224, 0.1);
+    color: var(--color-primary-light);
+    margin-bottom: var(--space-lg);
+  }
+
+  .feature-card h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .feature-card p {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

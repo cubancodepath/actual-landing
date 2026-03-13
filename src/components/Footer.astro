@@ -1,0 +1,105 @@
+---
+interface Props {
+  t: any;
+}
+
+const { t } = Astro.props;
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="var(--color-primary)" />
+          <text x="16" y="22" text-anchor="middle" fill="white" font-size="16" font-weight="700" font-family="var(--font-sans)">A</text>
+        </svg>
+        Actual Budget Mobile
+      </span>
+      <p class="footer-made">{t.footer.madeBy} <a href="https://github.com/cubancodepath" target="_blank" rel="noopener">cubancodepath</a></p>
+    </div>
+
+    <div class="footer-links">
+      <a href="https://github.com/actualbudget/actual" target="_blank" rel="noopener">{t.footer.github}</a>
+      <a href="https://actualbudget.com" target="_blank" rel="noopener">{t.footer.website}</a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; {new Date().getFullYear()} Actual Budget Mobile. Open source.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-3xl) 0 var(--space-xl);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+
+  .footer-made {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .footer-made a {
+    color: var(--color-primary-light);
+    transition: color 0.2s;
+  }
+
+  .footer-made a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: var(--space-xl);
+  }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-text);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-lg);
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+  }
+</style>
