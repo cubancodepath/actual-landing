@@ -7,6 +7,7 @@ export const POST: APIRoute = async ({ request }) => {
     const body = await request.json();
     const email = (body.email || '').trim().toLowerCase();
     const locale = body.locale || 'en';
+    const turnstileToken = body.turnstileToken || '';
 
     if (!email || !EMAIL_REGEX.test(email)) {
       return new Response(
@@ -15,8 +16,25 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Access D1 binding via Cloudflare env
+    // Access Cloudflare env
     const { env } = await import('cloudflare:workers');
+
+    // Verify Turnstile token
+    const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        secret: (env as any).TURNSTILE_SECRET,
+        response: turnstileToken,
+      }),
+    });
+    const turnstileData = await turnstileRes.json() as { success: boolean };
+    if (!turnstileData.success) {
+      return new Response(
+        JSON.stringify({ error: 'Verification failed. Please try again.' }),
+        { status: 403, headers: { 'Content-Type': 'application/json' } },
+      );
+    }
     const db = env.DB;
 
     try {

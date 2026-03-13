@@ -35,6 +35,7 @@ const { t, lang } = Astro.props;
           />
           <button type="submit">{t.hero.cta}</button>
         </div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACqPhLt6EP1bpkIF" data-size="compact" data-theme="dark"></div>
         <p class="form-message" id="hero-form-message"></p>
       </form>
     </div>
@@ -233,6 +234,14 @@ const { t, lang } = Astro.props;
       const email = (form.querySelector('input[type="email"]') as HTMLInputElement)?.value;
       if (!email) return;
 
+      const turnstileInput = form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement;
+      const turnstileToken = turnstileInput?.value;
+      if (!turnstileToken) {
+        msg.textContent = 'Please complete the verification.';
+        msg.className = 'form-message error';
+        return;
+      }
+
       const btn = form.querySelector('button') as HTMLButtonElement;
       const originalText = btn.textContent;
       btn.textContent = '...';
@@ -243,7 +252,7 @@ const { t, lang } = Astro.props;
         const res = await fetch('/api/waitlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, locale }),
+          body: JSON.stringify({ email, locale, turnstileToken }),
         });
 
         const data = await res.json();
@@ -262,6 +271,11 @@ const { t, lang } = Astro.props;
       } finally {
         btn.textContent = originalText;
         btn.disabled = false;
+        // Reset Turnstile for next submission
+        const widgetId = form.querySelector('.cf-turnstile');
+        if (widgetId && (window as any).turnstile) {
+          (window as any).turnstile.reset(widgetId);
+        }
       }
     });
   }
