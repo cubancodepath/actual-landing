@@ -1,43 +1,75 @@
-# Astro Starter Kit: Minimal
+# Actual Budget Mobile — Landing Page
 
-```sh
-npm create astro@latest -- --template minimal
+Landing page for **Actual Budget Mobile**, the privacy-first budgeting app for iOS. Built with Astro and deployed on Cloudflare Workers.
+
+![Actual Budget Mobile](public/images/screenshot-budget.dark.png)
+
+## Tech Stack
+
+- **Astro 6** — Static site generation with server-side API routes
+- **Cloudflare Workers** — Edge deployment via `@astrojs/cloudflare` adapter
+- **Cloudflare D1** — SQLite database for waitlist signups
+- **GSAP + ScrollTrigger** — Scroll-triggered animations and micro-interactions
+- **i18n** — English and Spanish with prefix-based routing (`/` and `/es/`)
+
+## Project Structure
+
+```
+src/
+├── components/       # Astro components (Navbar, Hero, Features, etc.)
+├── i18n/             # Translation files (en.json, es.json)
+├── layouts/          # Base HTML layout
+├── pages/
+│   ├── api/          # Waitlist API endpoint (D1)
+│   ├── es/           # Spanish pages
+│   └── index.astro   # English homepage
+├── scripts/          # GSAP animations
+└── styles/           # Global CSS + design tokens
+public/
+├── fonts/            # Web fonts
+└── images/           # iOS simulator screenshots (light + dark)
+db/
+└── schema.sql        # D1 waitlist table schema
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Getting Started
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm install
+npm run dev           # http://localhost:4321
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Deployment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### 1. Create the D1 database
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+npx wrangler d1 create actual-waitlist
+```
 
-## 🧞 Commands
+Update `wrangler.jsonc` with the returned `database_id`.
 
-All commands are run from the root of the project, from a terminal:
+### 2. Run the migration
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+npx wrangler d1 execute actual-waitlist --file=./db/schema.sql
+```
 
-## 👀 Want to learn more?
+### 3. Build and deploy
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+npm run build
+npx wrangler deploy
+```
+
+## Features
+
+- Responsive design with mobile-first approach
+- Light/dark screenshot gallery with toggle
+- GSAP scroll animations with `prefers-reduced-motion` support
+- Waitlist form with email validation and duplicate detection
+- Bilingual support (EN/ES)
+
+## License
+
+MIT
