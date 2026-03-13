@@ -19,21 +19,24 @@ export const POST: APIRoute = async ({ request }) => {
     // Access Cloudflare env
     const { env } = await import('cloudflare:workers');
 
-    // Verify Turnstile token
-    const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        secret: (env as any).TURNSTILE_SECRET,
-        response: turnstileToken,
-      }),
-    });
-    const turnstileData = await turnstileRes.json() as { success: boolean };
-    if (!turnstileData.success) {
-      return new Response(
-        JSON.stringify({ error: 'Verification failed. Please try again.' }),
-        { status: 403, headers: { 'Content-Type': 'application/json' } },
-      );
+    // Verify Turnstile token (skip in dev if secret not available)
+    const turnstileSecret = (env as any).TURNSTILE_SECRET;
+    if (turnstileSecret) {
+      const turnstileRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          secret: turnstileSecret,
+          response: turnstileToken,
+        }),
+      });
+      const turnstileData = await turnstileRes.json() as { success: boolean };
+      if (!turnstileData.success) {
+        return new Response(
+          JSON.stringify({ error: 'Verification failed. Please try again.' }),
+          { status: 403, headers: { 'Content-Type': 'application/json' } },
+        );
+      }
     }
     const db = env.DB;
 
