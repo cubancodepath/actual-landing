@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Actual Budget Mobile — Presupuesto privado para iOS",
+    "description": "Tu presupuesto, en tu bolsillo. App de presupuesto local-first, sincronización CRDT, código abierto para iPhone. Únete a la lista de espera."
+  },
+  "nav": {
+    "features": "Funciones",
+    "howItWorks": "Cómo funciona",
+    "waitlist": "Lista de espera"
+  },
+  "hero": {
+    "title": "Tu presupuesto, en tu bolsillo.",
+    "titleAccent": "Sin nube requerida.",
+    "subtitle": "La app de presupuesto para iOS que prioriza tu privacidad. Local-first, sincronización en tiempo real, código abierto.",
+    "cta": "Unirse a la lista",
+    "placeholder": "Tu correo electrónico"
+  },
+  "features": {
+    "heading": "Privacidad primero. Diseñada para ti.",
+    "localFirst": {
+      "title": "Local-first",
+      "description": "Tus datos financieros se quedan en tu dispositivo. Sin servidores de terceros, sin minería de datos."
+    },
+    "sync": {
+      "title": "Sincronización en tiempo real",
+      "description": "Sincronización basada en CRDT mantiene todos tus dispositivos en armonía, incluso sin conexión."
+    },
+    "envelope": {
+      "title": "Presupuesto por sobres",
+      "description": "Dale un trabajo a cada peso con el presupuesto base cero. Rastrea gastos por categoría."
+    },
+    "privacy": {
+      "title": "Encriptación de extremo a extremo",
+      "description": "Encriptación AES-256-GCM. Auto-hospeda tu servidor o usa modo local. Tus datos son tuyos."
+    }
+  },
+  "howItWorks": {
+    "heading": "Listo en minutos",
+    "step1": {
+      "number": "01",
+      "title": "Conectar",
+      "description": "Apunta la app a tu servidor Actual Budget — o usa el modo solo local."
+    },
+    "step2": {
+      "number": "02",
+      "title": "Organizar",
+      "description": "Crea cuentas, categorías y presupuestos. Importa datos existentes fácilmente."
+    },
+    "step3": {
+      "number": "03",
+      "title": "Rastrear",
+      "description": "Registra transacciones sobre la marcha. Tu presupuesto se actualiza en tiempo real en cada dispositivo."
+    }
+  },
+  "screenshots": {
+    "heading": "Diseñada para iOS",
+    "subtitle": "Una experiencia nativa que se siente como en casa en tu iPhone.",
+    "compat": "Totalmente compatible con tu servidor Actual Budget"
+  },
+  "waitlist": {
+    "heading": "Sé el primero en probarla",
+    "subtitle": "Estamos construyendo la mejor experiencia de presupuesto para iOS. Únete a la lista de espera y obtén acceso anticipado.",
+    "button": "Unirse",
+    "placeholder": "tu@correo.com",
+    "success": "¡Estás en la lista!",
+    "error": "Algo salió mal. Intenta de nuevo.",
+    "duplicate": "¡Ya estás en la lista!",
+    "invalid": "Por favor ingresa un correo válido."
+  },
+  "footer": {
+    "madeBy": "Hecho con cariño por",
+    "github": "GitHub",
+    "website": "Actual Budget",
+    "privacy": "Privacidad"
+  }
+}

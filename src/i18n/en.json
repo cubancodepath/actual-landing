@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Actual Budget Mobile — Privacy-first budgeting for iOS",
+    "description": "Your budget, your pocket. Local-first, CRDT-synced, open source budgeting app for iPhone. Join the waitlist."
+  },
+  "nav": {
+    "features": "Features",
+    "howItWorks": "How it Works",
+    "waitlist": "Join Waitlist"
+  },
+  "hero": {
+    "title": "Your budget, your pocket.",
+    "titleAccent": "No cloud required.",
+    "subtitle": "The privacy-first budgeting app for iOS. Local-first, real-time sync, open source.",
+    "cta": "Join the Waitlist",
+    "placeholder": "Enter your email"
+  },
+  "features": {
+    "heading": "Built for privacy. Designed for you.",
+    "localFirst": {
+      "title": "Local-first",
+      "description": "Your financial data stays on your device. No third-party servers, no data mining."
+    },
+    "sync": {
+      "title": "Real-time Sync",
+      "description": "CRDT-based sync keeps all your devices in perfect harmony, even offline."
+    },
+    "envelope": {
+      "title": "Envelope Budgeting",
+      "description": "Give every dollar a job with zero-based budgeting. Track spending by category."
+    },
+    "privacy": {
+      "title": "End-to-End Encrypted",
+      "description": "AES-256-GCM encryption. Self-host your server or go fully local. You own your data."
+    }
+  },
+  "howItWorks": {
+    "heading": "Up and running in minutes",
+    "step1": {
+      "number": "01",
+      "title": "Connect",
+      "description": "Point the app to your Actual Budget server — or use local-only mode."
+    },
+    "step2": {
+      "number": "02",
+      "title": "Organize",
+      "description": "Create accounts, categories, and budgets. Import existing data seamlessly."
+    },
+    "step3": {
+      "number": "03",
+      "title": "Track",
+      "description": "Log transactions on the go. Your budget updates in real time across every device."
+    }
+  },
+  "screenshots": {
+    "heading": "Designed for iOS",
+    "subtitle": "A native experience that feels right at home on your iPhone.",
+    "compat": "Fully compatible with your Actual Budget server"
+  },
+  "waitlist": {
+    "heading": "Be the first to try it",
+    "subtitle": "We're building the best budgeting experience for iOS. Join the waitlist and get early access.",
+    "button": "Join Waitlist",
+    "placeholder": "your@email.com",
+    "success": "You're on the list!",
+    "error": "Something went wrong. Please try again.",
+    "duplicate": "You're already on the list!",
+    "invalid": "Please enter a valid email address."
+  },
+  "footer": {
+    "madeBy": "Made with care by",
+    "github": "GitHub",
+    "website": "Actual Budget",
+    "privacy": "Privacy"
+  }
+}
