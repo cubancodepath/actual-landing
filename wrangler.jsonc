@@ -6,7 +6,7 @@
     {
       "binding": "DB",
       "database_name": "actual-waitlist",
-      "database_id": "REPLACE_AFTER_RUNNING_wrangler_d1_create"
+      "database_id": "834d8cbb-c59e-4be2-9331-149818b4ddad"
     }
   ]
 }
