@@ -1,37 +1,40 @@
 {
   "meta": {
     "title": "Actual Budget Mobile — Privacy-first budgeting for iOS",
-    "description": "Your budget, your pocket. Local-first, CRDT-synced, open source budgeting app for iPhone. Join the waitlist."
+    "description": "Actual Budget for iPhone. Your financial data stays on your device — no subscriptions, no data mining, no cloud required. Join the waitlist."
   },
   "nav": {
     "features": "Features",
     "howItWorks": "How it Works",
-    "waitlist": "Join Waitlist"
+    "waitlist": "Join Waitlist",
+    "menuLabel": "Menu",
+    "badge": "Now in Beta"
   },
   "hero": {
     "title": "Your budget, your pocket.",
     "titleAccent": "No cloud required.",
-    "subtitle": "The privacy-first budgeting app for iOS. Local-first, real-time sync, open source.",
+    "subtitle": "Budget on your phone without handing your data to anyone. Offline-first, conflict-free sync, and fully open source.",
     "cta": "Join the Waitlist",
-    "placeholder": "Enter your email"
+    "placeholder": "Enter your email",
+    "secondaryCta": "View Source on GitHub"
   },
   "features": {
-    "heading": "Built for privacy. Designed for you.",
+    "heading": "Your data belongs to you. Full stop.",
     "localFirst": {
       "title": "Local-first",
-      "description": "Your financial data stays on your device. No third-party servers, no data mining."
+      "description": "Your financial data stays on your device. No third-party servers, no data mining. Works offline, loads instantly, and you're never locked out of your own money."
     },
     "sync": {
       "title": "Real-time Sync",
-      "description": "CRDT-based sync keeps all your devices in perfect harmony, even offline."
+      "description": "Changes sync automatically across all your devices — even when you're offline. No conflicts, no duplicates, no lost transactions."
     },
     "envelope": {
       "title": "Envelope Budgeting",
-      "description": "Give every dollar a job with zero-based budgeting. Track spending by category."
+      "description": "Give every dollar a job. Zero-based budgeting means you assign every dollar before you spend it — so nothing slips through the cracks."
     },
     "privacy": {
       "title": "End-to-End Encrypted",
-      "description": "AES-256-GCM encryption. Self-host your server or go fully local. You own your data."
+      "description": "You own your data — no one else can read it, not even us. AES-256-GCM encryption protects everything in transit. Self-host your server or run fully local."
     }
   },
   "howItWorks": {
@@ -39,37 +42,86 @@
     "step1": {
       "number": "01",
       "title": "Connect",
-      "description": "Point the app to your Actual Budget server — or use local-only mode."
+      "description": "Connect to your Actual Budget server, or skip it and run fully local."
     },
     "step2": {
       "number": "02",
       "title": "Organize",
-      "description": "Create accounts, categories, and budgets. Import existing data seamlessly."
+      "description": "Set up your accounts, categories, and budgets. Already using Actual? Your data imports automatically."
     },
     "step3": {
       "number": "03",
       "title": "Track",
-      "description": "Log transactions on the go. Your budget updates in real time across every device."
+      "description": "Log transactions wherever you are. Your budget stays in sync across every device — in real time."
     }
   },
   "screenshots": {
     "heading": "Designed for iOS",
-    "subtitle": "A native experience that feels right at home on your iPhone.",
+    "subtitle": "A native iPhone experience, not a ported web app.",
     "compat": "Fully compatible with your Actual Budget server"
   },
   "waitlist": {
-    "heading": "Be the first to try it",
-    "subtitle": "We're building the best budgeting experience for iOS. Join the waitlist and get early access.",
+    "heading": "Limited spots in beta",
+    "subtitle": "Join the TestFlight beta and help shape the app before it launches. We review requests and send invites in batches.",
     "button": "Join Waitlist",
     "placeholder": "your@email.com",
-    "success": "You're on the list!",
+    "success": "You're in. We'll be in touch.",
     "error": "Something went wrong. Please try again.",
     "duplicate": "You're already on the list!",
-    "invalid": "Please enter a valid email address."
+    "invalid": "Please enter a valid email address.",
+    "trustLine": "One email per batch. No marketing, no tracking.",
+    "githubCta": "View the source on GitHub"
+  },
+  "faq": {
+    "heading": "Frequently asked questions",
+    "items": [
+      {
+        "question": "When will the app launch?",
+        "answer": "The app is in active beta on TestFlight right now. Join the list and we'll send you an invite when the next batch opens."
+      },
+      {
+        "question": "Is it free?",
+        "answer": "Yes! Actual Budget Mobile is free and open source. You can self-host your own Actual Budget server or use the app in fully offline, local-only mode — no server needed."
+      },
+      {
+        "question": "Does it work with my existing Actual Budget data?",
+        "answer": "Absolutely. The app connects directly to any Actual Budget server and syncs your existing accounts, categories, budgets, and transactions."
+      },
+      {
+        "question": "What about Android?",
+        "answer": "iOS first. Android is on the roadmap — we want to nail the iOS experience first, then bring it to Android."
+      },
+      {
+        "question": "Is my financial data safe?",
+        "answer": "Your data never leaves your device unless you choose to sync. When syncing, data is protected with AES-256-GCM end-to-end encryption. No third parties can access your information."
+      },
+      {
+        "question": "Do I need a server?",
+        "answer": "No. The app works fully offline in local-only mode. A server is only needed if you want to sync data across multiple devices."
+      }
+    ]
+  },
+  "comparison": {
+    "heading": "Other budgeting apps can't say this.",
+    "subtitle": "YNAB costs $109/year. Copilot costs $95/year. Actual Mobile is free, open source, and your data never leaves your device.",
+    "features": {
+      "localFirst": "Local-first",
+      "openSource": "Open source",
+      "free": "Free forever",
+      "e2ee": "End-to-end encrypted",
+      "offlineFirst": "Works offline",
+      "noSubscription": "No subscription"
+    },
+    "competitors": {
+      "actual": "Actual Mobile",
+      "ynab": "YNAB",
+      "mint": "Mint",
+      "copilot": "Copilot"
+    }
   },
   "footer": {
     "madeBy": "Made with care by",
-    "appSource": "App Source",
+    "appSource": "Source Code",
     "actualRepo": "Actual Budget GitHub",
     "website": "Actual Budget",
     "privacy": "Privacy"

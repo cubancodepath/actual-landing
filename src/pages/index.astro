@@ -3,8 +3,10 @@ import Base from '../layouts/Base.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import Features from '../components/Features.astro';
+import Comparison from '../components/Comparison.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import Screenshots from '../components/Screenshots.astro';
+import FAQ from '../components/FAQ.astro';
 import Waitlist from '../components/Waitlist.astro';
 import Footer from '../components/Footer.astro';
 import { getTranslations } from '../i18n';
@@ -18,8 +20,10 @@ const t = getTranslations(lang);
   <main>
     <Hero t={t} lang={lang} />
     <Features t={t} />
+    <Comparison t={t} />
     <HowItWorks t={t} />
     <Screenshots t={t} />
+    <FAQ t={t} />
     <Waitlist t={t} />
   </main>
   <Footer t={t} />

@@ -7,6 +7,7 @@ interface Props {
 
 const { title, description, lang } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://actual-landing.pages.dev');
+const ogImage = lang === 'es' ? '/images/og-image-es.png' : '/images/og-image.png';
 ---
 
 <!doctype html>
@@ -22,7 +23,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://actual-l
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:image" content="/images/og-image.png" />
+    <meta property="og:image" content={ogImage} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -30,7 +31,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://actual-l
     <meta name="twitter:description" content={description} />
 
     <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

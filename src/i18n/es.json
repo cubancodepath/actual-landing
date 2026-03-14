@@ -1,37 +1,40 @@
 {
   "meta": {
     "title": "Actual Budget Mobile — Presupuesto privado para iOS",
-    "description": "Tu presupuesto, en tu bolsillo. App de presupuesto local-first, sincronización CRDT, código abierto para iPhone. Únete a la lista de espera."
+    "description": "Actual Budget para iPhone. Tus finanzas en tu bolsillo — sin suscripciones, sin rastreo de datos, sin nube. Únete a la lista de espera."
   },
   "nav": {
     "features": "Funciones",
     "howItWorks": "Cómo funciona",
-    "waitlist": "Lista de espera"
+    "waitlist": "Lista de espera",
+    "menuLabel": "Menú",
+    "badge": "Ya en Beta"
   },
   "hero": {
     "title": "Tu presupuesto, en tu bolsillo.",
     "titleAccent": "Sin nube requerida.",
-    "subtitle": "La app de presupuesto para iOS que prioriza tu privacidad. Local-first, sincronización en tiempo real, código abierto.",
+    "subtitle": "Lleva el control de tus finanzas sin cederle tus datos a nadie. Funciona sin conexión, sincroniza sin conflictos y es completamente de código abierto.",
     "cta": "Unirse a la lista",
-    "placeholder": "Tu correo electrónico"
+    "placeholder": "Tu correo electrónico",
+    "secondaryCta": "Ver el código en GitHub"
   },
   "features": {
-    "heading": "Privacidad primero. Diseñada para ti.",
+    "heading": "Tus datos son tuyos. Así de simple.",
     "localFirst": {
       "title": "Local-first",
-      "description": "Tus datos financieros se quedan en tu dispositivo. Sin servidores de terceros, sin minería de datos."
+      "description": "Tus datos financieros se quedan en tu dispositivo. Sin servidores de terceros, sin minería de datos. Funciona sin conexión, carga al instante y nunca pierdes el acceso a tu dinero."
     },
     "sync": {
       "title": "Sincronización en tiempo real",
-      "description": "Sincronización basada en CRDT mantiene todos tus dispositivos en armonía, incluso sin conexión."
+      "description": "Tus cambios se sincronizan solos en todos tus dispositivos, incluso sin internet. Sin conflictos, sin transacciones duplicadas, sin pérdidas."
     },
     "envelope": {
       "title": "Presupuesto por sobres",
-      "description": "Dale un trabajo a cada peso con el presupuesto base cero. Rastrea gastos por categoría."
+      "description": "Dale una función a cada peso. Con el presupuesto de cero, asignas cada centavo antes de gastarlo — sin sorpresas a fin de mes."
     },
     "privacy": {
-      "title": "Encriptación de extremo a extremo",
-      "description": "Encriptación AES-256-GCM. Auto-hospeda tu servidor o usa modo local. Tus datos son tuyos."
+      "title": "Cifrado de extremo a extremo",
+      "description": "Tus datos son tuyos — nadie más puede leerlos, ni siquiera nosotros. Cifrado AES-256-GCM protege todo en tránsito. Aloja tu propio servidor o usa modo local."
     }
   },
   "howItWorks": {
@@ -39,33 +42,82 @@
     "step1": {
       "number": "01",
       "title": "Conectar",
-      "description": "Apunta la app a tu servidor Actual Budget — o usa el modo solo local."
+      "description": "Conecta con tu servidor Actual Budget, o úsala en modo local sin configurar nada."
     },
     "step2": {
       "number": "02",
       "title": "Organizar",
-      "description": "Crea cuentas, categorías y presupuestos. Importa datos existentes fácilmente."
+      "description": "Configura tus cuentas, categorías y presupuestos. ¿Ya usas Actual? Tus datos se importan solos."
     },
     "step3": {
       "number": "03",
-      "title": "Rastrear",
-      "description": "Registra transacciones sobre la marcha. Tu presupuesto se actualiza en tiempo real en cada dispositivo."
+      "title": "Registrar",
+      "description": "Anota cada gasto en el momento. Tu presupuesto se actualiza al instante en todos tus dispositivos."
     }
   },
   "screenshots": {
     "heading": "Diseñada para iOS",
-    "subtitle": "Una experiencia nativa que se siente como en casa en tu iPhone.",
+    "subtitle": "Una app iOS de verdad, no una web disfrazada de app.",
     "compat": "Totalmente compatible con tu servidor Actual Budget"
   },
   "waitlist": {
-    "heading": "Sé el primero en probarla",
-    "subtitle": "Estamos construyendo la mejor experiencia de presupuesto para iOS. Únete a la lista de espera y obtén acceso anticipado.",
-    "button": "Unirse",
+    "heading": "Cupos limitados en la beta",
+    "subtitle": "Únete a la beta en TestFlight y ayuda a darle forma a la app antes del lanzamiento. Revisamos solicitudes y enviamos invitaciones por tandas.",
+    "button": "Solicitar acceso",
     "placeholder": "tu@correo.com",
-    "success": "¡Estás en la lista!",
+    "success": "¡Listo! Te avisamos cuando haya cupo.",
     "error": "Algo salió mal. Intenta de nuevo.",
     "duplicate": "¡Ya estás en la lista!",
-    "invalid": "Por favor ingresa un correo válido."
+    "invalid": "Por favor ingresa un correo válido.",
+    "trustLine": "Un correo por tanda. Sin marketing, sin rastreo.",
+    "githubCta": "Ver el código en GitHub"
+  },
+  "faq": {
+    "heading": "Preguntas frecuentes",
+    "items": [
+      {
+        "question": "¿Cuándo se lanza la app?",
+        "answer": "La app está en beta activa en TestFlight. Únete a la lista y te mandamos una invitación cuando abramos el próximo cupo."
+      },
+      {
+        "question": "¿Es gratis?",
+        "answer": "¡Sí! Actual Budget Mobile es gratuita y de código abierto. Puedes alojar tu propio servidor de Actual Budget o usar la app en modo local completamente gratis, sin servidor."
+      },
+      {
+        "question": "¿Funciona con mis datos existentes de Actual Budget?",
+        "answer": "Por supuesto. La app se conecta directamente a cualquier servidor Actual Budget y sincroniza tus cuentas, categorías, presupuestos y transacciones existentes."
+      },
+      {
+        "question": "¿Y Android?",
+        "answer": "Por ahora, iOS. Android está en los planes — primero queremos que la experiencia en iPhone sea perfecta."
+      },
+      {
+        "question": "¿Mis datos financieros están seguros?",
+        "answer": "Tus datos nunca salen de tu dispositivo a menos que elijas sincronizar. Al sincronizar, los datos están protegidos con cifrado AES-256-GCM de extremo a extremo. Nadie más puede ver tu información — ni nosotros."
+      },
+      {
+        "question": "¿Necesito un servidor?",
+        "answer": "No. La app funciona completamente sin conexión en modo local. Un servidor solo es necesario si quieres sincronizar datos entre múltiples dispositivos."
+      }
+    ]
+  },
+  "comparison": {
+    "heading": "Lo que otras apps no te dan",
+    "subtitle": "YNAB cuesta $109/año. Copilot cuesta $95/año. Actual Mobile es gratis, de código abierto, y tus datos nunca salen de tu dispositivo.",
+    "features": {
+      "localFirst": "Local-first",
+      "openSource": "Código abierto",
+      "free": "Gratis para siempre",
+      "e2ee": "Cifrado de extremo a extremo",
+      "offlineFirst": "Funciona sin conexión",
+      "noSubscription": "Sin suscripción"
+    },
+    "competitors": {
+      "actual": "Actual Mobile",
+      "ynab": "YNAB",
+      "mint": "Mint",
+      "copilot": "Copilot"
+    }
   },
   "footer": {
     "madeBy": "Hecho con cariño por",

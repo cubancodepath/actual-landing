@@ -12,14 +12,11 @@ const { t, lang } = Astro.props;
 <nav class="navbar" id="navbar">
   <div class="container nav-inner">
     <a href={lang === 'es' ? '/es/' : '/'} class="logo">
-      <svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="8" fill="var(--color-primary)" />
-        <text x="16" y="22" text-anchor="middle" fill="white" font-size="16" font-weight="700" font-family="var(--font-sans)">A</text>
-      </svg>
+      <img class="logo-icon" src="/images/app-icon-64.png" alt="Actual Budget Mobile" width="28" height="28" />
       <span class="logo-text">Actual<span class="logo-mobile"> Mobile</span></span>
     </a>
 
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links">
       <a href="#features">{t.nav.features}</a>
       <a href="#how-it-works">{t.nav.howItWorks}</a>
       <a href="https://github.com/cubancodepath/actual-expo" target="_blank" rel="noopener" class="nav-github" aria-label="GitHub">
@@ -28,8 +25,35 @@ const { t, lang } = Astro.props;
       <a href="#waitlist" class="nav-cta">{t.nav.waitlist}</a>
       <LanguageSwitcher lang={lang} />
     </div>
+
+    <div class="nav-right-mobile">
+      <LanguageSwitcher lang={lang} />
+      <button
+        class="hamburger"
+        id="hamburger-btn"
+        aria-label={t.nav.menuLabel || 'Menu'}
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-inner">
+    <a href="#features" class="mobile-menu-link">{t.nav.features}</a>
+    <a href="#how-it-works" class="mobile-menu-link">{t.nav.howItWorks}</a>
+    <a href="https://github.com/cubancodepath/actual-expo" target="_blank" rel="noopener" class="mobile-menu-link">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -3px; margin-right: 6px;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a href="#waitlist" class="mobile-menu-cta">{t.nav.waitlist}</a>
+  </div>
+</div>
 
 <style>
   .navbar {
@@ -62,6 +86,10 @@ const { t, lang } = Astro.props;
     gap: var(--space-sm);
     font-weight: 700;
     font-size: 1.125rem;
+  }
+
+  .logo-icon {
+    border-radius: 6px;
   }
 
   .logo-mobile {
@@ -111,10 +139,146 @@ const { t, lang } = Astro.props;
     transform: translateY(-1px);
   }
 
+  /* Mobile: hide desktop nav, show hamburger */
+  .nav-right-mobile {
+    display: none;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .hamburger:hover {
+    border-color: var(--color-primary);
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 1px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .hamburger.open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 6, 18, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 99;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+
+  .mobile-menu.open {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mobile-menu-inner {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-2xl) var(--space-xl);
+    gap: var(--space-xs);
+  }
+
+  .mobile-menu-link {
+    display: block;
+    padding: var(--space-md) var(--space-lg);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-md);
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .mobile-menu-link:hover {
+    color: var(--color-text);
+    background: var(--color-surface);
+  }
+
+  .mobile-menu-cta {
+    display: block;
+    margin-top: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.2s;
+  }
+
+  .mobile-menu-cta:hover {
+    background: var(--color-primary-light);
+  }
+
   @media (max-width: 768px) {
-    .nav-links a:not(.nav-cta):not(:last-child) {
+    .nav-links {
       display: none;
+    }
+    .nav-right-mobile {
+      display: flex;
     }
     .logo-mobile { display: none; }
   }
 </style>
+
+<script>
+  const hamburger = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>

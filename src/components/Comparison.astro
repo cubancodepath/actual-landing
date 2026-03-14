@@ -1,0 +1,156 @@
+---
+interface Props {
+  t: any;
+}
+
+const { t } = Astro.props;
+
+const featureKeys = ['localFirst', 'openSource', 'free', 'e2ee', 'offlineFirst', 'noSubscription'] as const;
+
+// true = has feature, false = doesn't, 'partial' = limited/partial
+const data: Record<string, Record<string, boolean | 'partial'>> = {
+  actual:  { localFirst: true,  openSource: true,  free: true,  e2ee: true,  offlineFirst: true,  noSubscription: true },
+  ynab:    { localFirst: false, openSource: false, free: false, e2ee: false, offlineFirst: false, noSubscription: false },
+  mint:    { localFirst: false, openSource: false, free: true,  e2ee: false, offlineFirst: false, noSubscription: true },
+  copilot: { localFirst: false, openSource: false, free: false, e2ee: false, offlineFirst: false, noSubscription: false },
+};
+
+const competitors = ['actual', 'ynab', 'mint', 'copilot'] as const;
+---
+
+<section class="comparison section" id="comparison">
+  <div class="container">
+    <h2 class="comparison-heading" data-animate="fade-up">{t.comparison.heading}</h2>
+    <p class="comparison-subtitle" data-animate="fade-up" data-delay="0.1">{t.comparison.subtitle}</p>
+
+    <div class="comparison-table-wrapper" data-animate="fade-up" data-delay="0.2">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="feature-col"></th>
+            {competitors.map((c) => (
+              <th class={c === 'actual' ? 'highlight-col' : ''}>
+                {(t.comparison.competitors as any)[c]}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {featureKeys.map((key) => (
+            <tr>
+              <td class="feature-label">{(t.comparison.features as any)[key]}</td>
+              {competitors.map((c) => (
+                <td class={c === 'actual' ? 'highlight-col' : ''}>
+                  {data[c][key] === true ? (
+                    <svg class="icon-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  ) : (
+                    <svg class="icon-x" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .comparison-heading {
+    text-align: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .comparison-subtitle {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto var(--space-4xl);
+  }
+
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .comparison-table-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 520px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9375rem;
+  }
+
+  .comparison-table thead th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    padding: var(--space-lg);
+    white-space: nowrap;
+  }
+
+  .comparison-table tbody tr:last-child td,
+  .comparison-table tbody tr:last-child th {
+    border-bottom: none;
+  }
+
+  .feature-col,
+  .feature-label {
+    text-align: left;
+    font-weight: 500;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  .highlight-col {
+    background: rgba(135, 25, 224, 0.06);
+  }
+
+  thead .highlight-col {
+    color: var(--color-primary-light) !important;
+    font-weight: 700 !important;
+    font-size: 0.9375rem !important;
+  }
+
+  .icon-check {
+    color: var(--color-success);
+  }
+
+  .icon-x {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    .comparison-table th,
+    .comparison-table td {
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.8125rem;
+    }
+    .comparison-table thead th {
+      font-size: 0.8125rem;
+      padding: var(--space-md);
+    }
+  }
+</style>
