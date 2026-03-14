@@ -1,0 +1,157 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getTranslations } from '../i18n';
+
+const lang = 'en';
+const t = getTranslations(lang);
+---
+
+<Base title="Privacy Policy — Actual Budget Mobile" description="Privacy policy for Actual Budget Mobile iOS app." lang={lang}>
+  <Navbar t={t} lang={lang} />
+  <main class="privacy-page">
+    <div class="container">
+      <article class="privacy-content">
+        <h1>Privacy Policy</h1>
+        <p class="privacy-meta">Effective Date: March 14, 2026 · Last Updated: March 14, 2026</p>
+
+        <section>
+          <h2>Overview</h2>
+          <p>Actual Budget Mobile is built on a simple principle: your financial data belongs to you. This privacy policy explains what information we collect (very little), where your data lives (your device and your server), and how we handle the small amount of anonymous data we do receive.</p>
+        </section>
+
+        <section>
+          <h2>Information We Collect</h2>
+          <p><strong>We do not collect any personal information.</strong></p>
+          <p>We do not ask you to create an account with us. We do not collect your name, email address, financial data, transaction history, budget information, or any other personally identifiable information.</p>
+          <p>The only data we receive is anonymous crash reports when the app encounters an unexpected error (see Third-Party Services below).</p>
+        </section>
+
+        <section>
+          <h2>How Your Data is Stored</h2>
+          <p>Actual Budget Mobile is a local-first application. All of your budget data — transactions, accounts, categories, and settings — is stored in a SQLite database on your device.</p>
+          <p>If you choose to enable sync, your data is synchronized with a server that <strong>you own and operate</strong>. We have no access to your sync server and no visibility into the data it stores. Sync data is encrypted in transit using AES-256-GCM encryption before it ever leaves your device. The server you connect to is entirely under your control — we provide no hosting, no cloud storage, and no backend services.</p>
+        </section>
+
+        <section>
+          <h2>Third-Party Services</h2>
+          <p>The only third-party service used by this app is <strong>Sentry</strong> (sentry.io), which we use for crash reporting.</p>
+          <p>When the app crashes, Sentry automatically sends an anonymous error report containing:</p>
+          <ul>
+            <li>The type of error and where in the code it occurred</li>
+            <li>Device type and iOS version</li>
+            <li>App version</li>
+          </ul>
+          <p>Sentry does <strong>not</strong> collect your financial data, personal information, or any app content. Crash reports contain no information that can identify you as an individual. You can review Sentry's privacy policy at <a href="https://sentry.io/privacy" target="_blank" rel="noopener">sentry.io/privacy</a>.</p>
+          <p>We use no advertising networks, no analytics platforms, no social SDKs, and no other third-party services.</p>
+        </section>
+
+        <section>
+          <h2>Data Security</h2>
+          <p>Because your data never passes through our servers, the security of your budget data is primarily determined by the security of your own device and your self-hosted server.</p>
+          <p>For sync, all data is encrypted on-device using AES-256-GCM before transmission. Your sync encryption key is stored locally on your device and is never transmitted to or stored by us.</p>
+          <p>We recommend keeping your device updated and using a strong passcode.</p>
+        </section>
+
+        <section>
+          <h2>Children's Privacy</h2>
+          <p>Actual Budget Mobile is not directed at children under the age of 13, and we do not knowingly collect any information from children. If you believe a child has submitted information through this app, please contact us and we will address it promptly.</p>
+        </section>
+
+        <section>
+          <h2>Open Source</h2>
+          <p>Actual Budget Mobile is open-source software, licensed under the MIT License. You can review the full source code at <a href="https://github.com/cubancodepath/actual-expo" target="_blank" rel="noopener">github.com/cubancodepath/actual-expo</a>. Transparency in what the app does is part of how we protect your privacy.</p>
+        </section>
+
+        <section>
+          <h2>Changes to This Policy</h2>
+          <p>If we make material changes to this privacy policy, we will update the "Last Updated" date at the top of this page. Since we collect minimal data, significant changes are unlikely. Continued use of the app after any changes constitutes your acceptance of the updated policy.</p>
+        </section>
+
+        <section>
+          <h2>Contact Us</h2>
+          <p>If you have questions or concerns about this privacy policy, please contact us at:</p>
+          <p><a href="mailto:bjvalmaseda.g@gmail.com">bjvalmaseda.g@gmail.com</a></p>
+        </section>
+
+        <p class="privacy-copyright">&copy; 2026 CubanCodePath. All rights reserved.</p>
+      </article>
+    </div>
+  </main>
+  <Footer t={t} />
+</Base>
+
+<style>
+  .privacy-page {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    padding-bottom: var(--space-4xl);
+    min-height: 100vh;
+  }
+
+  .privacy-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .privacy-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .privacy-meta {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-3xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .privacy-content section {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .privacy-content h2 {
+    font-size: 1.375rem;
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+  }
+
+  .privacy-content p {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+  }
+
+  .privacy-content ul {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-xl);
+  }
+
+  .privacy-content li {
+    margin-bottom: var(--space-xs);
+  }
+
+  .privacy-content a {
+    color: var(--color-primary-light);
+    transition: color 0.2s;
+  }
+
+  .privacy-content a:hover {
+    color: var(--color-accent);
+  }
+
+  .privacy-content strong {
+    color: var(--color-text);
+  }
+
+  .privacy-copyright {
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+</style>
