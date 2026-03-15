@@ -8,6 +8,10 @@ export const POST: APIRoute = async ({ request }) => {
     const email = (body.email || '').trim().toLowerCase();
     const locale = body.locale || 'en';
     const turnstileToken = body.turnstileToken || '';
+    const utm_source = body.utm_source || null;
+    const utm_medium = body.utm_medium || null;
+    const utm_campaign = body.utm_campaign || null;
+    const utm_content = body.utm_content || null;
 
     if (!email || !EMAIL_REGEX.test(email)) {
       return new Response(
@@ -42,8 +46,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     try {
       await db
-        .prepare('INSERT INTO waitlist (email, locale) VALUES (?, ?)')
-        .bind(email, locale)
+        .prepare('INSERT INTO waitlist (email, locale, utm_source, utm_medium, utm_campaign, utm_content) VALUES (?, ?, ?, ?, ?, ?)')
+        .bind(email, locale, utm_source, utm_medium, utm_campaign, utm_content)
         .run();
     } catch (e: any) {
       // UNIQUE constraint = already on list

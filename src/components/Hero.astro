@@ -269,10 +269,17 @@ const { t, lang } = Astro.props;
         const turnstileToken = turnstileInput?.value || '';
 
         const locale = document.documentElement.lang || 'en';
+        const params = new URLSearchParams(window.location.search);
+        const utm = {
+          utm_source: params.get('utm_source') || null,
+          utm_medium: params.get('utm_medium') || null,
+          utm_campaign: params.get('utm_campaign') || null,
+          utm_content: params.get('utm_content') || null,
+        };
         const res = await fetch('/api/waitlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, locale, turnstileToken }),
+          body: JSON.stringify({ email, locale, turnstileToken, ...utm }),
         });
 
         const data = await res.json();
