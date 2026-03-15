@@ -120,7 +120,7 @@ const { t, lang } = Astro.props;
   .hero-form { max-width: 440px; }
 
   .hero-form .cf-turnstile {
-    margin-top: var(--space-md);
+    margin-top: var(--space-sm);
   }
 
   .hero-secondary-cta {
@@ -265,6 +265,8 @@ const { t, lang } = Astro.props;
 
       const btn = form.querySelector('button') as HTMLButtonElement;
       const originalText = btn.textContent;
+      const originalMinWidth = btn.style.minWidth;
+      btn.style.minWidth = btn.offsetWidth + 'px';
       btn.textContent = '...';
       btn.disabled = true;
 
@@ -301,6 +303,7 @@ const { t, lang } = Astro.props;
         msg.className = 'form-message error';
       } finally {
         btn.textContent = originalText;
+        btn.style.minWidth = originalMinWidth;
         btn.disabled = false;
         // Reset Turnstile for next submission
         const widgetId = form.querySelector('.cf-turnstile');
