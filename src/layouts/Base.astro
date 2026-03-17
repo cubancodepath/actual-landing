@@ -6,9 +6,9 @@ interface Props {
 }
 
 const { title, description, lang } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://actual-landing.pages.dev');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://actual.cubancodepath.com');
 const ogImagePath = lang === 'es' ? '/images/og-image-es.png' : '/images/og-image.png';
-const ogImage = new URL(ogImagePath, Astro.site ?? 'https://actual-landing.pages.dev').href;
+const ogImage = new URL(ogImagePath, Astro.site ?? 'https://actual.cubancodepath.com').href;
 ---
 
 <!doctype html>
