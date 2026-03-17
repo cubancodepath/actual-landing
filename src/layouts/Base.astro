@@ -7,7 +7,8 @@ interface Props {
 
 const { title, description, lang } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://actual-landing.pages.dev');
-const ogImage = lang === 'es' ? '/images/og-image-es.png' : '/images/og-image.png';
+const ogImagePath = lang === 'es' ? '/images/og-image-es.png' : '/images/og-image.png';
+const ogImage = new URL(ogImagePath, Astro.site ?? 'https://actual-landing.pages.dev').href;
 ---
 
 <!doctype html>
@@ -29,6 +30,7 @@ const ogImage = lang === 'es' ? '/images/og-image-es.png' : '/images/og-image.pn
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
