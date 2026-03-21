@@ -6,5 +6,7 @@ CREATE TABLE IF NOT EXISTS waitlist (
   utm_medium TEXT DEFAULT NULL,
   utm_campaign TEXT DEFAULT NULL,
   utm_content TEXT DEFAULT NULL,
-  created_at TEXT DEFAULT (datetime('now'))
+  created_at TEXT DEFAULT (datetime('now')),
+  testflight_invited INTEGER DEFAULT 0,
+  unsubscribed INTEGER DEFAULT 0
 );

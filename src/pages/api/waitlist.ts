@@ -1,4 +1,8 @@
 import type { APIRoute } from 'astro';
+import { render } from '@react-email/components';
+import Welcome, { copy as welcomeCopy } from '../../../emails/welcome';
+import { createEmailProvider, ConsoleEmailProvider } from '../../services/email';
+import { generateToken } from './unsubscribe';
 
 export const prerender = false;
 
@@ -60,6 +64,43 @@ export const POST: APIRoute = async ({ request }) => {
         );
       }
       throw e;
+    }
+
+    // Send welcome email (non-blocking)
+    const resendApiKey = (env as any).RESEND_API_KEY;
+    const provider = resendApiKey
+      ? createEmailProvider(resendApiKey)
+      : new ConsoleEmailProvider();
+
+    const emailLocale = locale === 'es' ? 'es' : 'en';
+    const testflightUrl = (env as any).TESTFLIGHT_URL || '';
+    const unsubscribeSecret = (env as any).UNSUBSCRIBE_SECRET || 'dev-secret';
+    const unsubscribeToken = await generateToken(email, unsubscribeSecret);
+    const baseUrl = new URL(request.url).origin;
+    const unsubscribeUrl = `${baseUrl}/api/unsubscribe?email=${encodeURIComponent(email)}&token=${unsubscribeToken}`;
+
+    let html: string;
+    try {
+      console.log('[waitlist] rendering email template...');
+      html = await render(Welcome({ locale: emailLocale, testflightUrl, unsubscribeUrl }));
+      console.log('[waitlist] rendered OK, HTML length:', html.length);
+    } catch (renderErr) {
+      console.error('[waitlist] render() failed:', renderErr);
+      return new Response(
+        JSON.stringify({ success: true, message: 'You\'re on the list!', emailError: 'render failed' }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } },
+      );
+    }
+
+    const subject = (welcomeCopy[emailLocale] || welcomeCopy.en).subject;
+
+    try {
+      console.log('[waitlist] sending email to:', email);
+      await provider.send({ to: email, subject, html, unsubscribeUrl });
+      console.log('[waitlist] email sent OK');
+      await db.prepare('UPDATE waitlist SET testflight_invited = 1 WHERE email = ?').bind(email).run();
+    } catch (sendErr) {
+      console.error('[waitlist] send failed:', sendErr);
     }
 
     return new Response(

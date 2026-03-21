@@ -10,12 +10,22 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-types": "wrangler types"
+    "generate-types": "wrangler types",
+    "email:dev": "email dev"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.1.1",
+    "@react-email/components": "^1.0.10",
     "astro": "^6.0.4",
     "gsap": "^3.14.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "resend": "^6.9.4",
     "wrangler": "^4.73.0"
+  },
+  "devDependencies": {
+    "@react-email/preview-server": "^5.2.10",
+    "@types/react": "^19.2.14",
+    "react-email": "^5.2.10"
   }
 }
