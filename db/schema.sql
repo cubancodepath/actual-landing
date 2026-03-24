@@ -8,5 +8,6 @@ CREATE TABLE IF NOT EXISTS waitlist (
   utm_content TEXT DEFAULT NULL,
   created_at TEXT DEFAULT (datetime('now')),
   testflight_invited INTEGER DEFAULT 0,
+  welcome_sent INTEGER DEFAULT 0,
   unsubscribed INTEGER DEFAULT 0
 );

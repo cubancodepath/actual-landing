@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { render } from '@react-email/components';
-import Welcome, { copy as welcomeCopy } from '../../../emails/welcome';
+import WelcomeWaitlist, { copy as welcomeCopy } from '../../../emails/welcome-waitlist';
 import { createEmailProvider, ConsoleEmailProvider } from '../../services/email';
 import { generateToken } from './unsubscribe';
 
@@ -73,7 +73,6 @@ export const POST: APIRoute = async ({ request }) => {
       : new ConsoleEmailProvider();
 
     const emailLocale = locale === 'es' ? 'es' : 'en';
-    const testflightUrl = (env as any).TESTFLIGHT_URL || '';
     const unsubscribeSecret = (env as any).UNSUBSCRIBE_SECRET || 'dev-secret';
     const unsubscribeToken = await generateToken(email, unsubscribeSecret);
     const baseUrl = new URL(request.url).origin;
@@ -82,7 +81,7 @@ export const POST: APIRoute = async ({ request }) => {
     let html: string;
     try {
       console.log('[waitlist] rendering email template...');
-      html = await render(Welcome({ locale: emailLocale, testflightUrl, unsubscribeUrl }));
+      html = await render(WelcomeWaitlist({ locale: emailLocale, unsubscribeUrl }));
       console.log('[waitlist] rendered OK, HTML length:', html.length);
     } catch (renderErr) {
       console.error('[waitlist] render() failed:', renderErr);
@@ -98,7 +97,7 @@ export const POST: APIRoute = async ({ request }) => {
       console.log('[waitlist] sending email to:', email);
       await provider.send({ to: email, subject, html, unsubscribeUrl });
       console.log('[waitlist] email sent OK');
-      await db.prepare('UPDATE waitlist SET testflight_invited = 1 WHERE email = ?').bind(email).run();
+      await db.prepare('UPDATE waitlist SET welcome_sent = 1 WHERE email = ?').bind(email).run();
     } catch (sendErr) {
       console.error('[waitlist] send failed:', sendErr);
     }

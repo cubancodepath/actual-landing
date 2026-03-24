@@ -8,7 +8,7 @@
     "howItWorks": "How it Works",
     "waitlist": "Join Waitlist",
     "menuLabel": "Menu",
-    "badge": "Now in Beta"
+    "badge": "Coming Soon"
   },
   "hero": {
     "title": "Your budget, your pocket.",
@@ -61,15 +61,15 @@
     "compat": "Fully compatible with your Actual Budget server"
   },
   "waitlist": {
-    "heading": "Limited spots in beta",
-    "subtitle": "Join the TestFlight beta and help shape the app before it launches. We review requests and send invites in batches.",
-    "button": "Join Waitlist",
+    "heading": "Launching soon",
+    "subtitle": "We're building the native iOS app for Actual Budget — offline-first, encrypted, open source. Sign up and we'll email you on launch day.",
+    "button": "Notify Me",
     "placeholder": "your@email.com",
-    "success": "You're in. We'll be in touch.",
+    "success": "You're on the list. We'll email you on launch day.",
     "error": "Something went wrong. Please try again.",
     "duplicate": "You're already on the list!",
     "invalid": "Please enter a valid email address.",
-    "trustLine": "One email per batch. No marketing, no tracking.",
+    "trustLine": "One email on launch day. No marketing, no tracking.",
     "githubCta": "View the source on GitHub"
   },
   "faq": {
@@ -77,7 +77,7 @@
     "items": [
       {
         "question": "When will the app launch?",
-        "answer": "The app is in active beta on TestFlight right now. Join the list and we'll send you an invite when the next batch opens."
+        "answer": "We're targeting end of April 2026. Sign up for the waitlist and we'll email you the moment it's available on the App Store."
       },
       {
         "question": "Is it free?",

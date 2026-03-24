@@ -6,7 +6,8 @@
     {
       "binding": "DB",
       "database_name": "actual-waitlist",
-      "database_id": "834d8cbb-c59e-4be2-9331-149818b4ddad"
+      "database_id": "834d8cbb-c59e-4be2-9331-149818b4ddad",
+      "migrations_dir": "db/migrations"
     }
   ]
 }

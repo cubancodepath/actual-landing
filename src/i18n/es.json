@@ -8,7 +8,7 @@
     "howItWorks": "Cómo funciona",
     "waitlist": "Lista de espera",
     "menuLabel": "Menú",
-    "badge": "Ya en Beta"
+    "badge": "Próximamente"
   },
   "hero": {
     "title": "Tu presupuesto, en tu bolsillo.",
@@ -61,15 +61,15 @@
     "compat": "Totalmente compatible con tu servidor Actual Budget"
   },
   "waitlist": {
-    "heading": "Cupos limitados en la beta",
-    "subtitle": "Únete a la beta en TestFlight y ayuda a darle forma a la app antes del lanzamiento. Revisamos solicitudes y enviamos invitaciones por tandas.",
-    "button": "Solicitar acceso",
+    "heading": "Lanzamiento próximo",
+    "subtitle": "Estamos construyendo la app nativa de iOS para Actual Budget — offline-first, cifrada, de código abierto. Regístrate y te avisamos el día del lanzamiento.",
+    "button": "Avísame",
     "placeholder": "tu@correo.com",
-    "success": "¡Listo! Te avisamos cuando haya cupo.",
+    "success": "Estás en la lista. Te avisamos el día del lanzamiento.",
     "error": "Algo salió mal. Intenta de nuevo.",
     "duplicate": "¡Ya estás en la lista!",
     "invalid": "Por favor ingresa un correo válido.",
-    "trustLine": "Un correo por tanda. Sin marketing, sin rastreo.",
+    "trustLine": "Un solo correo el día del lanzamiento. Sin marketing, sin rastreo.",
     "githubCta": "Ver el código en GitHub"
   },
   "faq": {
@@ -77,7 +77,7 @@
     "items": [
       {
         "question": "¿Cuándo se lanza la app?",
-        "answer": "La app está en beta activa en TestFlight. Únete a la lista y te mandamos una invitación cuando abramos el próximo cupo."
+        "answer": "Estamos apuntando a finales de abril de 2026. Regístrate en la lista de espera y te avisamos en cuanto esté disponible en el App Store."
       },
       {
         "question": "¿Es gratis?",
